@@ -1,0 +1,116 @@
+[gd_scene load_steps=7 format=3 uid="uid://xteq6v1jw48i"]
+
+[ext_resource type="Script" path="res://player.gd" id="1_2gjba"]
+[ext_resource type="Texture2D" uid="uid://bilvjxl6801jb" path="res://Assets/Basic 2D Shapes Primitive 128px/ShapesGreySoft.png" id="1_gflq4"]
+[ext_resource type="Texture2D" uid="uid://djrw3m0pp5jqa" path="res://Assets/white space.png" id="3_8qvr4"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7gpga"]
+radius = 48.0
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_4jffq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u6un4"]
+size = Vector2(24.2976, 652.356)
+
+[node name="Main" type="Node2D"]
+
+[node name="Player" type="CharacterBody2D" parent="."]
+top_level = true
+position = Vector2(432, 216)
+scale = Vector2(0.5, 0.5)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("1_2gjba")
+
+[node name="Sprite2D" type="Sprite2D" parent="Player"]
+position = Vector2(-6.10352e-05, 0)
+texture = ExtResource("1_gflq4")
+region_enabled = true
+region_rect = Rect2(644, 908, 120, 104)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+position = Vector2(-7.62939e-06, 0)
+shape = SubResource("CircleShape2D_7gpga")
+
+[node name="RayCast2D" type="RayCast2D" parent="Player"]
+target_position = Vector2(576, 288)
+collision_mask = 3
+
+[node name="Environment" type="Node2D" parent="."]
+
+[node name="Floor" type="Sprite2D" parent="Environment"]
+modulate = Color(0.60933, 0.60933, 0.60933, 1)
+z_index = -2
+position = Vector2(712, 352)
+scale = Vector2(31.125, 20.7368)
+texture = ExtResource("3_8qvr4")
+region_enabled = true
+region_rect = Rect2(32, 28, 64, 76)
+
+[node name="Wall" type="Sprite2D" parent="Environment"]
+position = Vector2(1146, 324)
+scale = Vector2(0.0182292, 0.75)
+texture = ExtResource("3_8qvr4")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Environment/Wall"]
+modulate = Color(0.870715, 0.000534059, 0.856724, 1)
+position = Vector2(-71936, -432)
+scale = Vector2(64, 1.33333)
+collision_layer = 3
+collision_mask = 3
+physics_material_override = SubResource("PhysicsMaterial_4jffq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Environment/Wall/StaticBody2D"]
+position = Vector2(1129.14, 323.644)
+shape = SubResource("RectangleShape2D_u6un4")
+
+[node name="Wall2" type="Sprite2D" parent="Environment"]
+position = Vector2(568, 649)
+scale = Vector2(0.75, 0.0347222)
+texture = ExtResource("3_8qvr4")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Environment/Wall2"]
+modulate = Color(0.870715, 0.000534059, 0.856724, 1)
+position = Vector2(-71936, -432)
+scale = Vector2(64, 1.33333)
+collision_layer = 3
+collision_mask = 3
+physics_material_override = SubResource("PhysicsMaterial_4jffq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Environment/Wall2/StaticBody2D"]
+position = Vector2(1124, 475.199)
+shape = SubResource("RectangleShape2D_u6un4")
+
+[node name="Wall3" type="Sprite2D" parent="Environment"]
+position = Vector2(576, -8)
+scale = Vector2(0.75, 0.0277778)
+texture = ExtResource("3_8qvr4")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Environment/Wall3"]
+modulate = Color(0.870715, 0.000534059, 0.856724, 1)
+position = Vector2(-71936, -432)
+scale = Vector2(64, 1.33333)
+collision_layer = 3
+collision_mask = 3
+physics_material_override = SubResource("PhysicsMaterial_4jffq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Environment/Wall3/StaticBody2D"]
+position = Vector2(1124, 324)
+shape = SubResource("RectangleShape2D_u6un4")
+
+[node name="Wall4" type="Sprite2D" parent="Environment"]
+position = Vector2(1.52588e-05, 320)
+scale = Vector2(0.0182292, 0.75)
+texture = ExtResource("3_8qvr4")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Environment/Wall4"]
+modulate = Color(0.870715, 0.000534059, 0.856724, 1)
+position = Vector2(-71936, -432)
+scale = Vector2(64, 1.33333)
+collision_layer = 3
+collision_mask = 3
+physics_material_override = SubResource("PhysicsMaterial_4jffq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Environment/Wall4/StaticBody2D"]
+position = Vector2(1117.14, 324)
+shape = SubResource("RectangleShape2D_u6un4")
